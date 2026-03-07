@@ -1,0 +1,32 @@
+﻿using Blocks.Core;
+using Blocks.Core.Constraints;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Submission.Persistence.EntityConfigurations;
+
+internal class FileEntityConfiguration
+{
+    public void Configure(ComplexPropertyBuilder<Domain.ValueObjects.File> builder)
+    {
+        builder.Property(e => e.OriginalName).HasMaxLength(MaxLength.C256).HasComment("Original full file name ´with extension");
+        builder.Property(equals => equals.FileServerId).HasMaxLength(MaxLength.C64);
+        builder.Property(e => e.Size).HasComment("File size in bytes");
+
+        builder.ComplexProperty(
+            o => o.Extension, complexBuilder =>
+            {
+                complexBuilder.Property(n => n.Value)
+                    .HasColumnName($"{builder.Metadata.ClrType.Name}_{complexBuilder.Metadata.PropertyInfo!.Name}")
+                    .HasMaxLength(MaxLength.C8);
+            });
+
+        builder.ComplexProperty(
+            o => o.Name, complexBuilder =>
+            {
+                complexBuilder.Property(n => n.Value)
+                    .HasColumnName($"{builder.Metadata.ClrType.Name}_{complexBuilder.Metadata.PropertyInfo!.Name}")
+                    .HasMaxLength(MaxLength.C64).HasComment("Final name of the file after renaming");
+            });
+    }
+}

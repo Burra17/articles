@@ -1,0 +1,41 @@
+﻿using Articles.Abstractions.Enums;
+using Auth.Domain.Users;
+using Auth.Domain.Users.Enums;
+using System.Text.RegularExpressions;
+
+namespace Auth.API.Features.Users.CreateUser;
+
+public class CreateUserCommand : IUserCreationInfo
+{
+    public required string Email { get; init; }
+    public required string FirstName { get; init; }
+    public required string LastName { get; init; }
+
+    public required Gender Gender { get; init; } 
+
+    public Honorific? Honorific { get; init; }
+
+    public string? PhoneNumber { get; init; }
+    public string? PictureUrl { get; init; }
+
+    public string? CompanyName { get; init; }
+    public string? Position { get; init; }
+
+    public string? Affiliation { get; init; }
+
+    public required IReadOnlyList<UserRoleDto> UserRoles { get; init; } = new List<UserRoleDto>();
+    IReadOnlyList<IUserRole> IUserCreationInfo.UserRoles => UserRoles;
+}
+
+public record UserRoleDto(
+    UserRoleType Type,
+    DateTime? StartDate,
+    DateTime? ExpiringDate
+) : IUserRole;
+
+public record CreateUserResponse(
+    string Email,
+    int UserId,
+    string Token
+);
+
