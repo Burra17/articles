@@ -13,7 +13,6 @@ builder.Services
 #region Add Services 
 builder.Services
     .AddApiServices(builder.Configuration)
-    .AddApplicationServices(builder.Configuration)
     .AddPersistenceServices(builder.Configuration);
 
 #endregion
@@ -22,6 +21,8 @@ var app  = builder.Build();
 
 #region Use
 app
+    .UseSwagger()
+    .UseSwaggerUI()
     .UseHttpsRedirection()
     .UseRouting()
     .UseFastEndpoints()

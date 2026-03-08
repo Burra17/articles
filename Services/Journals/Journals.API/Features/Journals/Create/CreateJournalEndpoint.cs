@@ -1,5 +1,5 @@
 ﻿using Articles.Abstractions;
-using Articles.Abstractions.Enums;
+using Articles.Security;
 using Auth.Grpc;
 using Blocks.Exceptions;
 using Blocks.Redis;

@@ -14,16 +14,11 @@ public enum UserRoleType
     [Description("Corresponding Author")]
     CORAUT = 12,
 
+    [Description("Review Editor")]
+    REVED = 21,
+
     [Description("User Admin")]
     USERADMIN = 91,
 
 }
 
-public static class Role
-{
-    public const string EOF = nameof(UserRoleType.EOF);
-    public const string AUT = nameof(UserRoleType.AUT);
-    public const string CORAUT = nameof(UserRoleType.CORAUT);
-    public const string USERADMIN = nameof(UserRoleType.USERADMIN);
-
-}
