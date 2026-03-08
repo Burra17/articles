@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="FastEndpoints.Swagger" Version="8.0.1" />
     <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>

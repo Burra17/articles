@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.EntityFramework\Blocks.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Redis\Blocks.Redis.csproj" />
     <ProjectReference Include="..\Submission.Domain\Submission.Domain.csproj" />
   </ItemGroup>
 

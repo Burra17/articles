@@ -9,7 +9,7 @@ public partial class Author
     {
         var author = new Author
         {
-            EmailAddress = EmailAddress.Create(email),
+            Email = EmailAddress.Create(email),
             FirstName = firstName,
             LastName = lastName,
             Title = title,

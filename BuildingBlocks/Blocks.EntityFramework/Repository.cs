@@ -29,7 +29,7 @@ public class Repository<TContext, TEntity>
     }
 
     public TContext Context => _dbContext;
-    public virtual DbSet<TEntity> entities => _entity;
+    public virtual DbSet<TEntity> Entity => _entity;
     public string TableName => _dbContext.Model.FindEntityType(typeof(TEntity))?.GetTableName()!;
 
     protected virtual IQueryable<TEntity> Query() => _entity;
@@ -39,8 +39,8 @@ public class Repository<TContext, TEntity>
     public virtual async Task<TEntity?> GetByIdAsync(int id)
         => await Query().FirstOrDefaultAsync(e => e.Id.Equals(id));
 
-    public virtual async Task<TEntity> AddAsync(TEntity entity)
-        => (await _entity.AddAsync(entity)).Entity;
+    public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken ct = default)
+        => (await _entity.AddAsync(entity, ct)).Entity;
 
     public virtual TEntity Update(TEntity entity)
         => _entity.Update(entity).Entity;

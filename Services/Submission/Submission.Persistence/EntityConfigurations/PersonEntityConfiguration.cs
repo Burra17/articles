@@ -25,7 +25,7 @@ internal class PersonEntityConfiguration : EntityConfiguration<Person>
         builder.Property(e => e.UserId).IsRequired(false);
 
         builder.ComplexProperty(
-            o => o.EmailAddress, builder =>
+            o => o.Email, builder =>
             {
                 builder.Property(n => n.Value)
                     .HasColumnName(builder.Metadata.PropertyInfo!.Name)

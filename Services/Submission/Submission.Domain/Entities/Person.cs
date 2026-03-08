@@ -3,7 +3,7 @@ using Submission.Domain.ValueObjects;
 
 namespace Submission.Domain.Entities;
 
-public class Person : IEntity
+public partial class Person : IEntity
 {
     public int Id { get; init; }
 
@@ -14,7 +14,7 @@ public class Person : IEntity
 
     public string? Title { get; set; }
 
-    public required EmailAddress EmailAddress { get; set; }
+    public required EmailAddress Email { get; set; }
 
     public required string Affiliation { get; set; }
 
