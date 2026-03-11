@@ -15,6 +15,7 @@
     <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj" />
     <ProjectReference Include="..\Blocks.Domain\Blocks.Domain.csproj" />
     <ProjectReference Include="..\Blocks.Exceptions\Blocks.Exceptions.csproj" />
+    <ProjectReference Include="..\Blocks.MediatR\Blocks.MediatR.csproj" />
   </ItemGroup>
 
 </Project>

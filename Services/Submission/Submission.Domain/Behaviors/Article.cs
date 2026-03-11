@@ -1,5 +1,6 @@
 ﻿using Articles.Abstractions.Enums;
 using Blocks.Domain;
+using Submission.Domain.Events;
 
 namespace Submission.Domain.Entities;
 
@@ -46,5 +47,6 @@ public partial class Article
                 Person = person,
                 Role = UserRoleType.REVED
             });
+        AddDomainEvent(new ArticleApproved(this));
     }
 }

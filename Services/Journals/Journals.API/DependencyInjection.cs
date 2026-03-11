@@ -33,7 +33,7 @@ public static class DependencyInjection
             .AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddJwtAuthentication(config)
-            .AddMapster()
+            .AddMapsterConfigsFromCurrentAssembly()
             .AddAuthorization()
             ;
 

@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.EntityFramework\Blocks.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Review.Domain\Review.Domain.csproj" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj" />
   </ItemGroup>
 
 </Project>

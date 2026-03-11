@@ -1,0 +1,18 @@
+﻿using Articles.Abstractions.Enums;
+
+namespace Articles.Abstractions.Events.Dtos;
+
+public record class AssetDto(
+    int Id,
+    string Name,
+    AssetType Type,
+    FileDto File
+    );
+
+public record class FileDto(
+    string OriginalName,
+    string Name,
+    string Extension,
+    string FileService,
+    long Size
+    );
