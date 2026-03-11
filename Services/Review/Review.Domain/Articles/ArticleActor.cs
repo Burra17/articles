@@ -12,4 +12,6 @@ public class ArticleActor
     public Person Person { get; init; } = null!;
 
     public UserRoleType Role { get; init; }
+
+    public string TypeDiscriminator { get; init; } = null!; // ef core discriminator to manage inheritance
 }

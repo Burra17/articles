@@ -1,0 +1,9 @@
+﻿namespace Review.Persistence.EntityConfigurations;
+
+public class EditorEntityConfiguration : IEntityTypeConfiguration<Editor>
+{
+    public void Configure(EntityTypeBuilder<Editor> builder)
+    {
+        builder.HasBaseType<Reviewer>();
+    }
+}

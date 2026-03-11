@@ -16,13 +16,13 @@ public interface IRepository<TEntity>
 
 }
 
-public class Repository<TContext, TEntity>
+public class RepositoryBase<TContext, TEntity>
     where TContext : DbContext
     where TEntity : class, IEntity
 {
     protected readonly TContext _dbContext;
     protected readonly DbSet<TEntity> _entity;
-    public Repository(TContext dbContext)
+    public RepositoryBase(TContext dbContext)
     {
         _dbContext = dbContext;
         _entity = _dbContext.Set<TEntity>();

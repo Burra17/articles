@@ -1,0 +1,25 @@
+﻿namespace Review.Persistence.EntityConfigurations;
+
+internal class ArticleActorEntityConfiguration : IEntityTypeConfiguration<ArticleActor>
+{
+    public void Configure(EntityTypeBuilder<ArticleActor> builder)
+    {
+        builder.HasIndex(e => new { e.ArticleId, e.PersonId, e.Role });
+        builder.Property(e => e.Role).HasEnumConversion().HasDefaultValue(UserRoleType.AUT);
+
+        //insight about EF Core inheritance
+        builder.HasDiscriminator(e => e.TypeDiscriminator)
+            .HasValue<ArticleActor>(nameof(ArticleActor))
+            .HasValue<ArticleAuthor>(nameof(ArticleAuthor));
+
+        builder.HasOne(aa => aa.Article)
+            .WithMany(a => a.Actors)
+            .HasForeignKey(a => a.ArticleId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(aa => aa.Person)
+            .WithMany()
+            .HasForeignKey(aa => aa.PersonId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+}

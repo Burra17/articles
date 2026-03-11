@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Auth.Persistence.Repositories;
 
 public class PersonRepository(AuthDBContext dbContext) 
-    : Repository<AuthDBContext, Person>(dbContext)
+    : RepositoryBase<AuthDBContext, Person>(dbContext)
 {
     public async Task<Person?> GetByUserIdAsync(int  userId, CancellationToken ct = default)
         => await Query()

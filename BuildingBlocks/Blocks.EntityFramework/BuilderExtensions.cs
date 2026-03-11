@@ -30,6 +30,16 @@ public static class BuilderExtensions
             v => deserializeFunc(v));
     }
 
+    public static ValueConverter<IReadOnlyList<T>, string> BuildJsonReadOnlyListConvertor<T>()
+    {
+        Func<IReadOnlyList<T>, string> serializeFunc = v => JsonSerializer.Serialize(v);
+        Func<string, IReadOnlyList<T>> deserializeFunc = v => JsonSerializer.Deserialize<IReadOnlyList<T>>(v ?? "[]")!;
+
+        return new ValueConverter<IReadOnlyList<T>, string>(
+            v => serializeFunc(v),
+            v => deserializeFunc(v));
+    }
+
     public static PropertyBuilder<TProperty> HasColumnNameSameAsProperty<TProperty>(this PropertyBuilder<TProperty> builder)
         => builder.HasColumnName(builder.Metadata.PropertyInfo?.Name);
 }

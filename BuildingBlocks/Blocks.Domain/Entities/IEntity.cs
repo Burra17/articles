@@ -1,8 +1,7 @@
 ﻿namespace Blocks.Domain.Entities;
 
-public interface IEntity
+public interface IEntity : IEntity<int>
 {
-    public int Id { get; }
 }
 
 public interface IEntity<TPrimaryKey>

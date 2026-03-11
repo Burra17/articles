@@ -6,7 +6,7 @@ namespace Blocks.EntityFrameworkCore;
 
 public static class RepositoryExtensions
 {
-    public static async Task<TEntity> FindByIdOrThrowAsync<TEntity, TContext>(this Repository<TContext, TEntity> repository, int id)
+    public static async Task<TEntity> FindByIdOrThrowAsync<TEntity, TContext>(this RepositoryBase<TContext, TEntity> repository, int id)
             where TContext : DbContext
             where TEntity : class, IEntity
     {
@@ -27,7 +27,7 @@ public static class RepositoryExtensions
         return entity!;
     }
 
-    public static async Task<TEntity> GetByIdOrThrowAsync<TEntity, TContext> (this Repository<TContext, TEntity> repository, int id)
+    public static async Task<TEntity> GetByIdOrThrowAsync<TEntity, TContext> (this RepositoryBase<TContext, TEntity> repository, int id)
             where TContext : DbContext
             where TEntity : class, IEntity
     {
