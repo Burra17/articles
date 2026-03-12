@@ -5,7 +5,7 @@ using Review.Domain.Shared;
 
 namespace Review.Domain.Articles;
 
-public class Article : AggregateEntity
+public partial class Article : AggregateEntity
 {
     public required string Title { get; init; }
     public ArticleType Type { get; init; }

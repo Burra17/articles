@@ -13,6 +13,6 @@ public record class FileDto(
     string OriginalName,
     string Name,
     string Extension,
-    string FileService,
+    string FileServerId,
     long Size
     );

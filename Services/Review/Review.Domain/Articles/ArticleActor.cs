@@ -1,5 +1,5 @@
 ﻿using Articles.Abstractions.Enums;
-using Auth.Domain.Persons;
+using Review.Domain.Shared;
 
 namespace Review.Domain.Articles;
 

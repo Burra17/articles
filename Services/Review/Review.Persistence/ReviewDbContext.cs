@@ -1,4 +1,5 @@
-﻿using Review.Domain.Assets;
+﻿using Review.Domain._Shared;
+using Review.Domain.Assets;
 
 namespace Review.Persistence;
 

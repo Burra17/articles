@@ -1,4 +1,6 @@
-﻿namespace Review.Domain.Articles;
+﻿using Review.Domain._Shared;
+
+namespace Review.Domain.Articles;
 
 public class ReviewerSpecialization
 {

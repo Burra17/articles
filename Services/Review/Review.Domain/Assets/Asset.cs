@@ -6,7 +6,7 @@ using Review.Domain.Assets.ValueObjects;
 
 namespace Review.Domain.Assets;
 
-public class Asset : AggregateEntity
+public partial class Asset : AggregateEntity
 {
     public AssetName Name { get; private set; } = null!;
     public AssetState State { get; private set; }

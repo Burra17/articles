@@ -1,4 +1,5 @@
 ﻿using Blocks.Core.Constraints;
+using Review.Domain._Shared;
 
 namespace Review.Persistence.EntityConfigurations;
 

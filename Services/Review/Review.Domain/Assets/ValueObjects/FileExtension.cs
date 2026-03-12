@@ -8,7 +8,7 @@ public class FileExtension : StringValueObject
 
     public static FileExtension FromAssetType(AssetTypeDefinition assetType)
     {
-        return new FileExtension(assetType.DeafultFileExtension);
+        return new FileExtension(assetType.DefaultFileExtension);
     }
 
     public static FileExtension FromFileName(string fileName, AssetTypeDefinition assetType)
