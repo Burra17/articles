@@ -3,7 +3,7 @@ using Review.Domain.Shared.ValueObjects;
 
 namespace Review.Domain.Shared;
 
-public class Person :Entity
+public class Person : AggregateRoot
 {
     public required string FirstName { get; init; }
     public required string LastName { get; init; }

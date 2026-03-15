@@ -25,6 +25,16 @@ internal class ArticleEntityConfiguration : EntityConfiguration<Article>
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
 
+        builder.HasMany(e => e.Actors).WithOne(e => e.Article)
+            .HasForeignKey(e => e.ArticleId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(e => e.Invitations).WithOne()
+            .HasForeignKey(e => e.ArticleId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
         builder.HasOne(e => e.SubmittedBy).WithMany()
             .HasForeignKey(e => e.SubmittedById)
             .HasPrincipalKey(e => e.Id)

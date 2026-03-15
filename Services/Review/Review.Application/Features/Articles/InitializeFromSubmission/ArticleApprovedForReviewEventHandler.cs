@@ -2,8 +2,10 @@
 using Articles.Abstractions.Events.Dtos;
 using Blocks.Domain;
 using Blocks.Exceptions;
+using FileStorage.Contracts;
 using Mapster;
 using MassTransit;
+using Review.Application.FileStorage;
 using Review.Domain.Assets;
 
 namespace Review.Application.Features.Articles.InitializeFromSubmission;
@@ -13,7 +15,9 @@ public class ArticleApprovedForReviewEventHandler(
     ArticleRepository _articleRepository,
     Repository<Journal> _journalRepository,
     Repository<Person> _personRepository,
-    AssetTypeDefinitionRepository _assetTypeDefinitionRepository)
+    AssetTypeDefinitionRepository _assetTypeDefinitionRepository,
+    IFileService _fileService,
+    FileServiceFactory _fileServiceFactory)
     : IConsumer<ArticleApprovedForReviewEvent>
 {
     public async Task Consume(ConsumeContext<ArticleApprovedForReviewEvent> context)
@@ -42,6 +46,14 @@ public class ArticleApprovedForReviewEventHandler(
             var asset = Asset.CreateFromSubmission(assetDto, assetTypeDefinition, articleDto.Id);
 
             // todo - download the files from submission and upload to preview
+            var submissionFileService = _fileServiceFactory(FileStorageType.Submission);
+            var (fileStream, fileMetadata) = await submissionFileService.DownloadFileAsync(assetDto.File.FileServerId);
+
+            var uploadRequest = new FileUploadRequest(
+                fileMetadata.StoragePath, fileMetadata.FileName, fileMetadata.ContentType, fileMetadata.FileSize);
+            fileMetadata = await _fileService.UploadFileAsync(uploadRequest, fileStream);
+
+            asset.CreateFile(fileMetadata, assetTypeDefinition);
 
             assets.Add(asset);
         }

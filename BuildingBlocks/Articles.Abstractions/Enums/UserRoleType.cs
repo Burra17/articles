@@ -17,6 +17,9 @@ public enum UserRoleType
     [Description("Review Editor")]
     REVED = 21,
 
+    [Description("Reviewer")]
+    REV = 22,
+
     [Description("User Admin")]
     USERADMIN = 91,
 

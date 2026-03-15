@@ -1,22 +1,23 @@
 ﻿using Articles.Abstractions.Events.Dtos;
+using FileStorage.Contracts;
 
 namespace Review.Domain.Assets.ValueObjects;
 
 public partial class File
 {
-    public static File CreateFromSubmission(FileDto fileDto, AssetTypeDefinition assetType)
+    public static File CreateFile(FileMetadata fileMetadata, Asset asset, AssetTypeDefinition assetType)
     {
-        var extension = FileExtension.FromFileName(fileDto.OriginalName, assetType);
+        var fileName = Path.GetFileName(fileMetadata.StoragePath);
+        var extension = FileExtension.FromFileName(fileName, assetType);
 
         var file = new File()
         {
-            Name = new FileName(fileDto.Name),
+            Name = FileName.From(asset, extension),
             Extension = extension,
-            OriginalName = fileDto.OriginalName,
-            Size = fileDto.Size,
-            FileServerId = fileDto.FileServerId
+            OriginalName = fileName,
+            Size = fileMetadata.FileSize,
+            FileServerId = fileMetadata.FileId,
         };
-
         return file;
     }
 }

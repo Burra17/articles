@@ -7,7 +7,7 @@ namespace Auth.API.Features.Persons;
 
 public class PersonGrpcService(PersonRepository _personRepository, GrpcTypeAdapterConfig typeAdapterConfig) : IPersonService
 {
-    public async ValueTask<GetPersonResponse> GetPersonResponseByUserIdAsync(GetPersonByUserIdRequest request, CallContext context = default)
+    public async ValueTask<GetPersonResponse> GetPersonByUserIdAsync(GetPersonByUserIdRequest request, CallContext context = default)
     {
         var person = Guard.NotFound(
             await _personRepository.GetByUserIdAsync(request.UserId, context.CancellationToken)

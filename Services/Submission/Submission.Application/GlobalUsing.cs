@@ -12,7 +12,7 @@ global using Submission.Domain.Entities;
 global using Submission.Domain.Enums;
 
 // Application
-global using Submission.Application.Features._Shared;
+global using Submission.Application.Features.Shared;
 
 // Persistence
 global using Submission.Persistence.Repositories;

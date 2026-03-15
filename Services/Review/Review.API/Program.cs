@@ -1,6 +1,39 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Carter;
+using Review.API;
+using Review.Application;
+using Review.Persistence;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+#region Add Services 
+builder.Services
+    .ConfigureApiOptions(builder.Configuration);
+
+builder.Services
+    .AddApiServices(builder.Configuration)
+    .AddApplicationServices(builder.Configuration)
+    .AddPersistenceServices(builder.Configuration);
+
+#endregion
+var app = builder.Build();
+#region Use Services
+app
+    .UseSwagger()
+    .UseSwaggerUI()
+    .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization()
+    ;
+
+app.MapCarter();
+
+// todo - migrate - create first migration
+// 
+if (app.Environment.IsDevelopment())
+{
+    // todo seed test data
+}
+
+#endregion
+
 
 app.Run();

@@ -34,7 +34,7 @@ public static class DependencyInjection
             .AddSwaggerGen()                // For generating Swagger documentation
             ;
 
-        services.AddMongoFileStorage(config);
+        services.AddMongoFileStorageAsSingletone(config);
 
         var grpcOptions = config.GetSectionByTypeName<GrpcServicesOptions>();
         services.AddCodeFirstGrpcClient<IPersonService>(grpcOptions, "Person");

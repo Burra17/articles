@@ -1,8 +1,9 @@
-﻿using Review.Domain.Shared;
+﻿using Review.Domain.Articles;
+using Review.Domain.Shared;
 
-namespace Review.Domain.Articles;
+namespace Review.Domain.Reviewers;
 
-public class Reviewer : Person
+public partial class Reviewer : Person
 {
     private HashSet<ReviewerSpecialization> _specializations = new();
     public IReadOnlyCollection<ReviewerSpecialization> Specializations => _specializations;

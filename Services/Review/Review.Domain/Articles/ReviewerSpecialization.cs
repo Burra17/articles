@@ -1,4 +1,5 @@
-﻿using Review.Domain._Shared;
+﻿using Review.Domain.Reviewers;
+using Review.Domain.Shared;
 
 namespace Review.Domain.Articles;
 

@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flurl" Version="4.0.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Articles.Abstractions\Articles.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Messaging\Blocks.Messaging.csproj" />
+    <ProjectReference Include="..\..\..\Modules\EmailService\EmailService.Contracts\EmailService.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FileStorage\FileStorage.Contracts\FileStorage.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FileStorage\FileStorage.MongoGridFS\FileStorage.MongoGridFS.csproj" />
+    <ProjectReference Include="..\..\Submission\Submission.Application\Submission.Application.csproj" />
     <ProjectReference Include="..\Review.Domain\Review.Domain.csproj" />
     <ProjectReference Include="..\Review.Persistence\Review.Persistence.csproj" />
   </ItemGroup>

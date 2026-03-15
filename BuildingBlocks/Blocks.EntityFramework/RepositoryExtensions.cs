@@ -1,6 +1,8 @@
-﻿using Blocks.Domain.Entities;
+﻿using Blocks.Core;
+using Blocks.Domain.Entities;
 using Blocks.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Blocks.EntityFrameworkCore;
 
@@ -27,13 +29,17 @@ public static class RepositoryExtensions
         return entity!;
     }
 
-    public static async Task<TEntity> GetByIdOrThrowAsync<TEntity, TContext> (this RepositoryBase<TContext, TEntity> repository, int id)
+    public static async Task<TEntity> GetByIdOrThrowAsync<TEntity, TContext> (this RepositoryBase<TContext, TEntity> repository, int id, CancellationToken ct = default)
             where TContext : DbContext
             where TEntity : class, IEntity
     {
-        var entity = await repository.GetByIdAsync(id);
+        var entity = await repository.GetByIdAsync(id, ct);
         if (entity == null)
             throw new NotFoundException($"{typeof(TEntity).Name} not found.");
         return entity!;
     }
+
+    public static async Task<TEntity> SingleOrThrowAsync<TEntity>(this IQueryable<TEntity> source, Expression<Func<TEntity, bool>> predicate, CancellationToken ct = default)
+        where TEntity : class, IEntity<int>
+        => Guard.NotFound(await source.SingleOrDefaultAsync(predicate, ct));
 }

@@ -36,8 +36,8 @@ public class RepositoryBase<TContext, TEntity>
     public virtual async Task<TEntity?> FindByIdAsync(int id)
         => await _entity.FindAsync(id);
 
-    public virtual async Task<TEntity?> GetByIdAsync(int id)
-        => await Query().FirstOrDefaultAsync(e => e.Id.Equals(id));
+    public virtual async Task<TEntity?> GetByIdAsync(int id, CancellationToken ct = default)
+        => await Query().FirstOrDefaultAsync(e => e.Id.Equals(id), ct);
 
     public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken ct = default)
         => (await _entity.AddAsync(entity, ct)).Entity;
@@ -48,9 +48,9 @@ public class RepositoryBase<TContext, TEntity>
     public virtual void Remove(TEntity entity)
         => _entity.Remove(entity);
 
-    public virtual async Task<bool> DeleteByIdAsync(int id)
+    public virtual async Task<bool> DeleteByIdAsync(int id, CancellationToken ct = default)
     {
-        var rowsAffected = await _dbContext.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM {TableName} WHERE Id = {id}");
+        var rowsAffected = await _dbContext.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM {TableName} WHERE Id = {id}", ct);
         return rowsAffected > 0;
     }
 

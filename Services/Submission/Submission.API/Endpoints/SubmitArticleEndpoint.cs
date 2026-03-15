@@ -1,4 +1,5 @@
 ﻿using Articles.Abstractions;
+using Articles.Security;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,7 @@ public static class SubmitArticleEndpoint
             var response = await sender.Send(command with { ArticleId = articleId });
             return Results.Ok(response);
         })
-        .RequireRoleAuthorization(Role.Author)
+        .RequireRoleAuthorization(Role.AUT)
         .WithName("SubmitArticle")
         .WithTags("Articles")
         .Produces<IdResponse>(StatusCodes.Status200OK)

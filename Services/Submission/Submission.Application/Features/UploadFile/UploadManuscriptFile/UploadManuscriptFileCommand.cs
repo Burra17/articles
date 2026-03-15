@@ -15,7 +15,7 @@ public record UploadManuscriptFileCommand : ArticleCommand
     [Required]
     public IFormFile File { get; init; } = null!;
 
-    public override ArticleActionType ActionType => ArticleActionType.Upload;
+    public override ArticleActionType ActionType => ArticleActionType.UploadAsset;
 }
 
 public class UploadManuscriptCommandValidator : ArticleCommandValidator<UploadManuscriptFileCommand>

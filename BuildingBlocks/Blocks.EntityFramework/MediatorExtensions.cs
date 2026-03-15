@@ -8,7 +8,7 @@ public static class MediatorExtensions
 {
     public static async Task<int> DispatchDomainEventsAsync(this IMediator mediator, DbContext dbContext, CancellationToken ct = default)
     {
-        var domainAggregates = dbContext.ChangeTracker.Entries<IAggregateEntity>();
+        var domainAggregates = dbContext.ChangeTracker.Entries<IAggregateRoot>();
 
         var domainEvents = domainAggregates
             .SelectMany(x => x.Entity.DomainEvents)

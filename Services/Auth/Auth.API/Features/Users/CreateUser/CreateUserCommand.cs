@@ -1,7 +1,5 @@
 ﻿using Articles.Abstractions.Enums;
 using Auth.Domain.Users;
-using Auth.Domain.Users.Enums;
-using System.Text.RegularExpressions;
 
 namespace Auth.API.Features.Users.CreateUser;
 
