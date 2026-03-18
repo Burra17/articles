@@ -89,6 +89,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleHub.Domain", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleHub.Persistence", "Services\ArticleHub\ArticleHub.Persistence\ArticleHub.Persistence.csproj", "{0241B8A8-19ED-49F2-841D-88F5125D0817}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Articles.IntegrationEvents.Contracts", "..\srcBuildingBlocks\Articles.IntegrationEvents.Contracts\Articles.IntegrationEvents.Contracts.csproj", "{C478F4EA-FB83-4560-9D96-0CA2C26F992F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +229,10 @@ Global
 		{0241B8A8-19ED-49F2-841D-88F5125D0817}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0241B8A8-19ED-49F2-841D-88F5125D0817}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0241B8A8-19ED-49F2-841D-88F5125D0817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C478F4EA-FB83-4560-9D96-0CA2C26F992F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C478F4EA-FB83-4560-9D96-0CA2C26F992F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C478F4EA-FB83-4560-9D96-0CA2C26F992F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C478F4EA-FB83-4560-9D96-0CA2C26F992F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +278,7 @@ Global
 		{C2E6DE6D-F38A-49A5-A80A-8BDA8F67191B} = {72E483A4-E295-4D2D-B1EB-4C4BE5F56319}
 		{0E2FF17F-B5F5-4DE1-973B-A75AA9AD410D} = {72E483A4-E295-4D2D-B1EB-4C4BE5F56319}
 		{0241B8A8-19ED-49F2-841D-88F5125D0817} = {72E483A4-E295-4D2D-B1EB-4C4BE5F56319}
+		{C478F4EA-FB83-4560-9D96-0CA2C26F992F} = {6C26CFF6-DE75-4C0D-BC6C-55141AA12D11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82B241E0-403A-4854-AB76-80ACCFCFEE5E}

@@ -1,5 +1,4 @@
-﻿using Articles.Abstractions.Events;
-using Articles.Abstractions.Events.Dtos;
+﻿using Articles.IntegrationEvents.Contracts;
 using Mapster;
 using MassTransit;
 using Submission.Domain.Events;

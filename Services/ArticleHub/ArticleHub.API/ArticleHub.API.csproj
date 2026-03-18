@@ -9,12 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Carter" Version="9.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\srcBuildingBlocks\Articles.IntegrationEvents.Contracts\Articles.IntegrationEvents.Contracts.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Articles.Abstractions\Articles.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Articles.Security\Articles.Security.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.AspNetCore\Blocks.AspNetCore.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Messaging\Blocks.Messaging.csproj" />
+    <ProjectReference Include="..\ArticleHub.Persistence\ArticleHub.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

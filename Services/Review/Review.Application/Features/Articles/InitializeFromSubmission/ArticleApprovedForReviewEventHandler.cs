@@ -1,5 +1,4 @@
-﻿using Articles.Abstractions.Events;
-using Articles.Abstractions.Events.Dtos;
+﻿using Articles.IntegrationEvents.Contracts;
 using Blocks.Domain;
 using Blocks.Exceptions;
 using FileStorage.Contracts;

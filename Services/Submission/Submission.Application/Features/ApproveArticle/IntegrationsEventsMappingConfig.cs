@@ -1,4 +1,4 @@
-﻿using Articles.Abstractions.Events.Dtos;
+﻿using Articles.IntegrationEvents.Contracts;
 using Mapster;
 using Submission.Domain.ValueObjects;
 

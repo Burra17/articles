@@ -1,7 +1,6 @@
 ﻿using Articles.Abstractions;
 using Articles.Abstractions.Enums;
-using Articles.Abstractions.Events.Dtos;
-using Auth.Grpc;
+using Articles.IntegrationEvents.Contracts;
 using Blocks.Domain;
 using Review.Domain.Articles.Events;
 using Review.Domain.Assets;
