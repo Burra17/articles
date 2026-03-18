@@ -8,6 +8,8 @@ using Blocks.AspNetCore.Grpc;
 using Auth.Grpc;
 using ProtoBuf.Grpc.Server;
 using System.IO.Compression;
+using Blocks.Core.Security;
+using Blocks.AspNetCore.Providers;
 
 namespace Journals.API;
 
@@ -37,11 +39,16 @@ public static class DependencyInjection
             .AddAuthorization()
             ;
 
+        services
+            .AddScoped<IClaimsProvider, HttpContextProvider>()
+            .AddScoped<HttpContextProvider>();
+
         //server
         services.AddCodeFirstGrpc(options =>
         {
             options.ResponseCompressionLevel = CompressionLevel.Fastest;
             options.EnableDetailedErrors = true;
+            options.Interceptors.Add<AssignUserIdInterceptor>();
         });
 
         //clients

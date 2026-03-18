@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace Blocks.AspNetCore;
 
@@ -26,5 +27,11 @@ public static class Extensions
         }
 
         return context.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+    }
+
+    public static string? GetClaimValue(this IHttpContextAccessor httpContextAccessor, string claimName)
+    {
+        var user = httpContextAccessor.HttpContext?.User;
+        return user?.FindFirstValue(claimName);
     }
 }

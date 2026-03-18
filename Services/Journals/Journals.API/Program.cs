@@ -1,3 +1,5 @@
+using Blocks.AspNetCore.Filters;
+using Blocks.FastEndpoints;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Journals.API;
@@ -23,7 +25,14 @@ app
     .UseSwaggerUI()
     .UseHttpsRedirection()
     .UseRouting()
-    .UseFastEndpoints()
+    .UseFastEndpoints(config =>
+    {
+        config.Endpoints.Configurator = ed =>
+        {
+            ed.PreProcessor<AssignUserIdPreProcessor>(Order.Before);
+        };
+    }
+    )
     .UseSwaggerGen();
 
 #endregion

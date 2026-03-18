@@ -1,5 +1,5 @@
-
-
+using Blocks.AspNetCore.Filters;
+using Blocks.AspNetCore.Middlewares;
 using Submission.API;
 using Submission.API.Endpoints;
 using Submission.Application;
@@ -18,9 +18,14 @@ var app = builder.Build();
 app
     .UseSwagger()
     .UseSwaggerUI()
-    .UseRouting();           // Match the incoming request to an endpoint.
+    .UseRouting()           // Match the incoming request to an endpoint.
+    .UseMiddleware<GlobalExceptionMiddleware>()
+    ;
 
 app.MapAllEndpoints();
+
+app.MapGroup("/api").AddEndpointFilter<AssignUserIdFilter>();
+
 // todo - migrate - create first migration
 // 
 if (app.Environment.IsDevelopment())

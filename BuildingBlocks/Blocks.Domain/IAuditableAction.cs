@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace Blocks.Domain;
+﻿namespace Blocks.Domain;
 
 public interface IAuditableAction
 {
     public DateTime CreatedOn => DateTime.UtcNow;
     public int CreatedById { get; set; }
+
+    public string Action {  get; }
 }
 
-public interface IAuditableAction<TAction> : IAuditableAction
-    where TAction : Enum
+public interface IAuditableAction<TActionType> : IAuditableAction
+    where TActionType : Enum
 {
-    TAction ActionType { get; }
+    TActionType ActionType { get; }
+
+    string IAuditableAction.Action => ActionType.ToString();
 }

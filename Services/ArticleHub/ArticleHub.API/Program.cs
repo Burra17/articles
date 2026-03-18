@@ -1,6 +1,8 @@
 using ArticleHub.API;
 using ArticleHub.Persistence;
 using Blocks.AspNetCore;
+using Blocks.AspNetCore.Filters;
+
 //using Blocks.AspNetCore.Middleware;
 //using Blocks.AspNetCore.Middlewares;
 using Blocks.EntityFrameworkCore;
@@ -31,7 +33,7 @@ app
     //.UseMiddleware<RequestContextMiddleware>()
     //.UseMiddleware<RequestDiagnosticsMiddleware>();
 
-var api = app.MapGroup("/api");
+var api = app.MapGroup("/api").AddEndpointFilter<AssignUserIdFilter>();
 api.MapCarter();
 #endregion
 

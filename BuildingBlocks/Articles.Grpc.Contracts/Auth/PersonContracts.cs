@@ -1,5 +1,6 @@
 ﻿using Articles.Abstractions;
 using Articles.Abstractions.Enums;
+using Blocks.Domain;
 using ProtoBuf;
 using ProtoBuf.Grpc;
 using System.ServiceModel;
@@ -71,10 +72,13 @@ public class GetPersonRequest
 }
 
 [ProtoContract]
-public class GetPersonByUserIdRequest
+public class GetPersonByUserIdRequest : IAuditableAction
 {
     [ProtoMember(1)]
     public int UserId { get; set; }
+    public int CreatedById { get; set; }
+
+    public string Action => string.Empty;
 }
 
 [ProtoContract]

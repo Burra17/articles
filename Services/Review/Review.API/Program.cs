@@ -4,6 +4,7 @@ using Review.Application;
 using Review.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
+
 #region Add Services 
 builder.Services
     .ConfigureApiOptions(builder.Configuration);

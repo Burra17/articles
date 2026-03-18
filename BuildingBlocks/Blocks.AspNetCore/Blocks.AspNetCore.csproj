@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.2.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj" />
+    <ProjectReference Include="..\Blocks.Domain\Blocks.Domain.csproj" />
+    <ProjectReference Include="..\Blocks.Exceptions\Blocks.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>
