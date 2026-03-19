@@ -11,6 +11,7 @@ internal class FileEntityConfiguration
     {
         builder.Property(e => e.OriginalName).HasMaxLength(MaxLength.C256).HasComment("Original full file name ´with extension");
         builder.Property(equals => equals.FileServerId).HasMaxLength(MaxLength.C64);
+
         builder.Property(e => e.Size).HasComment("File size in bytes");
 
         builder.ComplexProperty(

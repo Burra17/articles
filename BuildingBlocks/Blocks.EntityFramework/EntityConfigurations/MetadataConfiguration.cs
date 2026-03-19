@@ -1,0 +1,15 @@
+using Blocks.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Blocks.EntityFrameworkCore.EntityConfigurations;
+
+public abstract class MetadataConfiguration<T> : IEntityTypeConfiguration<T>
+    where T : class, IMetadataEntity
+{
+    public virtual void Configure(EntityTypeBuilder<T> builder)
+    {
+        builder.ToTable(typeof(T).Name);
+        builder.SeedFromJsonFile();
+    }
+}

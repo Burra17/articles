@@ -19,7 +19,7 @@ internal class AssetTypeDefinitionEntityConfiguration : IEntityTypeConfiguration
 
         builder.ComplexProperty(e => e.AllowedFileExtensions, builder =>
         {
-            var convertor = BuilderExtensions.BuildJsonListConvertor<string>();
+            var convertor = BuilderExtensions.BuildJsonReadOnlyListConvertor<string>();
             builder.Property(e => e.Extensions)
                 .HasConversion(convertor)
                 .HasColumnName(builder.Metadata.PropertyInfo!.Name)

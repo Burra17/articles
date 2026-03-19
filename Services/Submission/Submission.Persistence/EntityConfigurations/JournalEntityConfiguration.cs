@@ -1,4 +1,5 @@
-﻿using Blocks.EntityFrameworkCore.EntityConfigurations;
+﻿using Blocks.Core.Constraints;
+using Blocks.EntityFrameworkCore.EntityConfigurations;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Submission.Domain.Entities;
 

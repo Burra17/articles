@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Blocks.EntityFrameworkCore;
 
@@ -42,4 +43,24 @@ public static class BuilderExtensions
 
     public static PropertyBuilder<TProperty> HasColumnNameSameAsProperty<TProperty>(this PropertyBuilder<TProperty> builder)
         => builder.HasColumnName(builder.Metadata.PropertyInfo?.Name);
+
+    public static bool SeedFromJsonFile<T>(this EntityTypeBuilder<T> builder, string folder = "Data/Master")
+        where T : class
+    {
+        var filePath = Path.Combine(AppContext.BaseDirectory, folder, $"{typeof(T).Name}.json");
+        if (!File.Exists(filePath))
+            return false;
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            Converters = { new JsonStringEnumConverter() }
+        };
+
+        var data = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(filePath), options);
+        if (data != null)
+            builder.HasData(data);
+
+        return true;
+    }
 }

@@ -5,6 +5,9 @@ using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Submission.Application.Features.CreateArticle;
+using Microsoft.Extensions.Caching.Memory;
+using Submission.Application.StateMachines;
+using Submission.Domain.StateMachines;
 using System.Reflection;
 
 namespace Submission.Application;
@@ -15,7 +18,7 @@ public static class DependencyInjection
     {
         services
             .AddMapsterConfigsFromCurrentAssembly()
-            .AddValidatorsFromAssemblyContaining<CreateArticleCommandValidator>() // Register FluentValidation validators as transient services
+            .AddValidatorsFromAssemblyContaining<CreateArticleCommandValidator>()
             .AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
@@ -23,6 +26,12 @@ public static class DependencyInjection
                 config.AddOpenBehavior(typeof(AssignUserIdBehavior<,>));
             })
             .AddMassTransitWithRabbitMQ(config, Assembly.GetExecutingAssembly());
+
+        services.AddScoped<ArticleStateMachineFactory>(provider => articleStage =>
+        {
+            var cache = provider.GetRequiredService<IMemoryCache>();
+            return new ArticleStateMachine(articleStage, cache);
+        });
 
         return services;
     }

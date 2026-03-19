@@ -1,5 +1,6 @@
 using Blocks.AspNetCore.Filters;
 using Blocks.AspNetCore.Middlewares;
+using Blocks.EntityFrameworkCore;
 using Submission.API;
 using Submission.API.Endpoints;
 using Submission.Application;
@@ -26,8 +27,8 @@ app.MapAllEndpoints();
 
 app.MapGroup("/api").AddEndpointFilter<AssignUserIdFilter>();
 
-// todo - migrate - create first migration
-// 
+app.Migrate<SubmissionDbContext>();
+
 if (app.Environment.IsDevelopment())
 {
     // todo seed test data
