@@ -21,18 +21,16 @@ var app = builder.Build();
 
 #region Use
 app
-    .UseSwagger()
-    .UseSwaggerUI()
-    .UseHttpsRedirection()
     .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization()
     .UseFastEndpoints(config =>
     {
         config.Endpoints.Configurator = ed =>
         {
             ed.PreProcessor<AssignUserIdPreProcessor>(Order.Before);
         };
-    }
-    )
+    })
     .UseSwaggerGen();
 
 #endregion

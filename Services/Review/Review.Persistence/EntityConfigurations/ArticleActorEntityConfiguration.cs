@@ -4,6 +4,7 @@ internal class ArticleActorEntityConfiguration : IEntityTypeConfiguration<Articl
 {
     public void Configure(EntityTypeBuilder<ArticleActor> builder)
     {
+        builder.HasKey(e => new { e.ArticleId, e.PersonId, e.TypeDiscriminator });
         builder.HasIndex(e => new { e.ArticleId, e.PersonId, e.Role });
         builder.Property(e => e.Role).HasEnumConversion().HasDefaultValue(UserRoleType.AUT);
 

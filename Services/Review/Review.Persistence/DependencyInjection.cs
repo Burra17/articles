@@ -1,4 +1,5 @@
 ﻿using Blocks.EntityFrameworkCore.Interceptors;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ public static class DependencyInjection
 
         services.AddDbContext<ReviewDbContext>((provider, options) =>
         {
+            options.UseSqlServer(connectionString);
             options.AddInterceptors(provider.GetServices<ISaveChangesInterceptor>());
         });
 

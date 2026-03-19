@@ -1,3 +1,4 @@
+using Blocks.EntityFrameworkCore;
 using Carter;
 using Review.API;
 using Review.Application;
@@ -27,8 +28,8 @@ app
 
 app.MapCarter();
 
-// todo - migrate - create first migration
-// 
+app.Migrate<ReviewDbContext>();
+
 if (app.Environment.IsDevelopment())
 {
     // todo seed test data
