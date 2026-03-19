@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "Artificial Intelligence Systems",
+    "Abbreviation": "aisys"
+  },
+  {
+    "Id": 2,
+    "Name": "Behavioral Psychology",
+    "Abbreviation": "behpsych"
+  },
+  {
+    "Id": 3,
+    "Name": "Aerospace Engineering",
+    "Abbreviation": "aeroeng"
+  },
+  {
+    "Id": 4,
+    "Name": "Young Thinkers",
+    "Abbreviation": "ythink"
+  }
+]

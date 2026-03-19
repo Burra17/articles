@@ -5,6 +5,7 @@ using Submission.API;
 using Submission.API.Endpoints;
 using Submission.Application;
 using Submission.Persistence;
+using Submission.Persistence.Data.Test;
 
 var builder = WebApplication.CreateBuilder(args);
 #region Add Services 
@@ -31,7 +32,8 @@ app.Migrate<SubmissionDbContext>();
 
 if (app.Environment.IsDevelopment())
 {
-    // todo seed test data
+    try { app.Services.SeedTestData(); }
+    catch (Exception ex) { Console.WriteLine($"[Seed] Skipped: {ex.Message}"); }
 }
 
 #endregion

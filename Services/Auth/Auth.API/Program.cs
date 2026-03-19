@@ -13,6 +13,7 @@ builder.Services
 #region Add Services 
 builder.Services
     .AddApiServices(builder.Configuration)
+    .AddApplicationServices(builder.Configuration)
     .AddPersistenceServices(builder.Configuration);
 
 #endregion

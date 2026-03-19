@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Submission.Persistence.Migrations
 {
     /// <inheritdoc />
@@ -155,6 +157,19 @@ namespace Submission.Persistence.Migrations
                         principalTable: "Articles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ArticleStageTransition",
+                columns: new[] { "ActionType", "CurrentStage", "DestinationStage" },
+                values: new object[,]
+                {
+                    { "AssignAuthor", "Created", "Created" },
+                    { "SubmitDraft", "Created", "Submitted" },
+                    { "UploadAsset", "Created", "Created" },
+                    { "SubmitDraft", "InitialRejected", "Submitted" },
+                    { "ApproveDraft", "Submitted", "InitialApproved" },
+                    { "RejectDraft", "Submitted", "InitialRejected" }
                 });
 
             migrationBuilder.CreateIndex(

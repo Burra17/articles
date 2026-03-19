@@ -107,6 +107,44 @@ namespace Submission.Persistence.Migrations
                     b.HasKey("CurrentStage", "ActionType", "DestinationStage");
 
                     b.ToTable("ArticleStageTransition", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "AssignAuthor",
+                            DestinationStage = "Created"
+                        },
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "UploadAsset",
+                            DestinationStage = "Created"
+                        },
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "SubmitDraft",
+                            DestinationStage = "Submitted"
+                        },
+                        new
+                        {
+                            CurrentStage = "Submitted",
+                            ActionType = "ApproveDraft",
+                            DestinationStage = "InitialApproved"
+                        },
+                        new
+                        {
+                            CurrentStage = "Submitted",
+                            ActionType = "RejectDraft",
+                            DestinationStage = "InitialRejected"
+                        },
+                        new
+                        {
+                            CurrentStage = "InitialRejected",
+                            ActionType = "SubmitDraft",
+                            DestinationStage = "Submitted"
+                        });
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.Asset", b =>

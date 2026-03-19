@@ -12,7 +12,7 @@ using Submission.Persistence;
 namespace Submission.Persistence.Migrations
 {
     [DbContext(typeof(SubmissionDbContext))]
-    [Migration("20260319113045_InitialCreate")]
+    [Migration("20260319125649_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -110,6 +110,44 @@ namespace Submission.Persistence.Migrations
                     b.HasKey("CurrentStage", "ActionType", "DestinationStage");
 
                     b.ToTable("ArticleStageTransition", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "AssignAuthor",
+                            DestinationStage = "Created"
+                        },
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "UploadAsset",
+                            DestinationStage = "Created"
+                        },
+                        new
+                        {
+                            CurrentStage = "Created",
+                            ActionType = "SubmitDraft",
+                            DestinationStage = "Submitted"
+                        },
+                        new
+                        {
+                            CurrentStage = "Submitted",
+                            ActionType = "ApproveDraft",
+                            DestinationStage = "InitialApproved"
+                        },
+                        new
+                        {
+                            CurrentStage = "Submitted",
+                            ActionType = "RejectDraft",
+                            DestinationStage = "InitialRejected"
+                        },
+                        new
+                        {
+                            CurrentStage = "InitialRejected",
+                            ActionType = "SubmitDraft",
+                            DestinationStage = "Submitted"
+                        });
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.Asset", b =>

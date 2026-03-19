@@ -1,0 +1,53 @@
+[
+  {
+    "Id": 1,
+    "UserId": 1,
+    "FirstName": "DotNet",
+    "LastName": "LabX",
+    "Title": "Mr",
+    "Email": { "Value": "dotnetlabx@articles.test" },
+    "Affiliation": "DotNetLabX – Real .NET solutions. From developer to architect"
+  },
+  {
+    "$type": "Submission.Domain.Entities.Author, Submission.Domain",
+    "Id": 2,
+    "FirstName": "Author",
+    "LastName": "1",
+    "Title": "Mr",
+    "Email": { "Value": "author.1@articles.test" },
+    "Affiliation": "Transatlantic Aerospace Technology Hub, Montreal",
+    "Degree": "PhD",
+    "Discipline": "Aerospace Engineering"
+  },
+  {
+    "$type": "Submission.Domain.Entities.Author, Submission.Domain",
+    "Id": 3,
+    "FirstName": "Author",
+    "LastName": "2",
+    "Title": "Ms",
+    "Email": { "Value": "author.2@articles.test" },
+    "Affiliation": "Centre for Sustainable Urban Technologies, Manchester"
+  },
+  {
+    "$type": "Submission.Domain.Entities.Author, Submission.Domain",
+    "Id": 4,
+    "UserId": 4,
+    "FirstName": "CorAuthor",
+    "LastName": "1",
+    "Title": "Ms",
+    "Email": { "Value": "corauthor.1@articles.test" },
+    "Affiliation": "Foundation for Youth Innovation and Learning, Cape Town"
+  },
+  {
+    "$type": "Submission.Domain.Entities.Author, Submission.Domain",
+    "Id": 5,
+    "UserId": 5,
+    "FirstName": "CorAuthor",
+    "LastName": "2",
+    "Title": "Mr",
+    "Email": { "Value": "corauthor.2@articles.test" },
+    "Affiliation": "International Institute of Aerospace Innovation, Abu Dhabi",
+    "Degree": "MsC",
+    "Discipline": "Planetary Science"
+  }
+]
