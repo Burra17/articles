@@ -11,12 +11,13 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 ARG BUILD_CONFIGURATION=Release
-ARG APP_NAME=ArticleHub.API
-ARG PROJECT_PATH=Services/ArticleHub/${APP_NAME}
+ARG APP_NAME=Submission.API
+ARG PROJECT_PATH=Services/Submission/${APP_NAME}
 
 WORKDIR /src
 COPY ["${PROJECT_PATH}/${APP_NAME}.csproj", "${PROJECT_PATH}/"]
 COPY ["BuildingBlocks/Articles.Abstractions/Articles.Abstractions.csproj", "BuildingBlocks/Articles.Abstractions/"]
+COPY ["BuildingBlocks/Articles.Grpc.Contracts/Articles.Grpc.Contracts.csproj", "BuildingBlocks/Articles.Grpc.Contracts/"]
 COPY ["BuildingBlocks/Articles.Security/Articles.Security.csproj", "BuildingBlocks/Articles.Security/"]
 COPY ["BuildingBlocks/Blocks.AspNetCore/Blocks.AspNetCore.csproj", "BuildingBlocks/Blocks.AspNetCore/"]
 COPY ["BuildingBlocks/Blocks.Core/Blocks.Core.csproj", "BuildingBlocks/Blocks.Core/"]
@@ -25,8 +26,12 @@ COPY ["BuildingBlocks/Blocks.EntityFramework/Blocks.EntityFrameworkCore.csproj",
 COPY ["BuildingBlocks/Blocks.Exceptions/Blocks.Exceptions.csproj", "BuildingBlocks/Blocks.Exceptions/"]
 COPY ["BuildingBlocks/Blocks.MediatR/Blocks.MediatR.csproj", "BuildingBlocks/Blocks.MediatR/"]
 COPY ["BuildingBlocks/Blocks.Messaging/Blocks.Messaging.csproj", "BuildingBlocks/Blocks.Messaging/"]
-COPY ["Services/ArticleHub/ArticleHub.Domain/ArticleHub.Domain.csproj", "Services/ArticleHub/ArticleHub.Domain/"]
-COPY ["Services/ArticleHub/ArticleHub.Persistence/ArticleHub.Persistence.csproj", "Services/ArticleHub/ArticleHub.Persistence/"]
+COPY ["BuildingBlocks/Blocks.Redis/Blocks.Redis.csproj", "BuildingBlocks/Blocks.Redis/"]
+COPY ["Modules/FileStorage/FileStorage.Contracts/FileStorage.Contracts.csproj", "Modules/FileStorage/FileStorage.Contracts/"]
+COPY ["Modules/FileStorage/FileStorage.MongoGridFS/FileStorage.MongoGridFS.csproj", "Modules/FileStorage/FileStorage.MongoGridFS/"]
+COPY ["Services/Submission/Submission.Application/Submission.Application.csproj", "Services/Submission/Submission.Application/"]
+COPY ["Services/Submission/Submission.Domain/Submission.Domain.csproj", "Services/Submission/Submission.Domain/"]
+COPY ["Services/Submission/Submission.Persistence/Submission.Persistence.csproj", "Services/Submission/Submission.Persistence/"]
 RUN dotnet restore "./${PROJECT_PATH}/${APP_NAME}.csproj"
 COPY . .
 WORKDIR "/src/${PROJECT_PATH}"

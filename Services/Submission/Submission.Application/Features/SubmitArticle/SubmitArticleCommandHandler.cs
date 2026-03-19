@@ -1,4 +1,6 @@
-﻿namespace Submission.Application.Features.SubmitArticle;
+﻿using Blocks.EntityFrameworkCore;
+
+namespace Submission.Application.Features.SubmitArticle;
 
 public class SubmitArticleCommandHandler(ArticleRepository _articleRepository, ArticleStateMachineFactory _stateMachineFactory)
     : IRequestHandler<SubmitArticleCommand, IdResponse>

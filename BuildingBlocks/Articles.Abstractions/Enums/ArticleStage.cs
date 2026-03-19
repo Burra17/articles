@@ -2,5 +2,8 @@
 
 public enum ArticleStage
 {
-    Created
+    Created = 101,
+    Submitted = 103,
+    InitialRejected = 104,
+    InitialApproved = 105,
 }

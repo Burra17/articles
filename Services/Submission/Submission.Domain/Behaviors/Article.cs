@@ -40,6 +40,14 @@ public partial class Article
         return asset;
     }
 
+    public void Submit(IArticleAction<ArticleActionType> action, ArticleStateMachineFactory stateMachineFactory)
+    {
+        stateMachineFactory.ValidateStageTransition(Stage, action.ActionType);
+
+        SubmittedById = action.CreatedById;
+        Stage = ArticleStage.Submitted;
+    }
+
     public void Approve(Person person)
     {
         Actors.Add(new ArticleActor

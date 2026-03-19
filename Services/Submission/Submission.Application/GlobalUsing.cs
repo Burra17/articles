@@ -14,6 +14,9 @@ global using Submission.Domain.Enums;
 // Application
 global using Submission.Application.Features.Shared;
 
+// Domain StateMachines
+global using Submission.Domain.StateMachines;
+
 // Persistence
 global using Submission.Persistence.Repositories;
 
