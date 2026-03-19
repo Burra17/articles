@@ -12,7 +12,7 @@ using Submission.Persistence;
 namespace Submission.Persistence.Migrations
 {
     [DbContext(typeof(SubmissionDbContext))]
-    [Migration("20260319100137_InitialCreate")]
+    [Migration("20260319113045_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

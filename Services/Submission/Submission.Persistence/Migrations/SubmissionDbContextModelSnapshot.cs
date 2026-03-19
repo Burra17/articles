@@ -61,7 +61,7 @@ namespace Submission.Persistence.Migrations
 
                     b.HasIndex("SubmittedById");
 
-                    b.ToTable("Articles", (string)null);
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.ArticleActor", b =>
@@ -86,7 +86,7 @@ namespace Submission.Persistence.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("ArticleActors", (string)null);
+                    b.ToTable("ArticleActors");
 
                     b.HasDiscriminator<string>("TypeDiscriminator").HasValue("ArticleActor");
 
@@ -183,7 +183,7 @@ namespace Submission.Persistence.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Assets", (string)null);
+                    b.ToTable("Assets");
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.AssetTypeDefinition", b =>
@@ -231,7 +231,7 @@ namespace Submission.Persistence.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("AssetTypes", (string)null);
+                    b.ToTable("AssetTypes");
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.Journal", b =>
@@ -255,7 +255,7 @@ namespace Submission.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Journals", (string)null);
+                    b.ToTable("Journals");
                 });
 
             modelBuilder.Entity("Submission.Domain.Entities.Person", b =>
@@ -312,7 +312,7 @@ namespace Submission.Persistence.Migrations
                         .IsUnique()
                         .HasFilter("[UserId] IS NOT NULL");
 
-                    b.ToTable("People", (string)null);
+                    b.ToTable("People");
 
                     b.HasDiscriminator<string>("TypeDiscriminator").HasValue("Person");
 
