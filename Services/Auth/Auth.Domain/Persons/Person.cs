@@ -20,7 +20,7 @@ public partial class Person : Entity
 
     public ProfessionalProfile? ProfessionalProfile { get; set; }
 
-    public string PictureUrl { get; set; } = null!;
+    public string? PictureUrl { get; set; }
 
     public int? UserId { get; set; }
     public User? User { get; set; }

@@ -1,4 +1,4 @@
-﻿using MassTransit;
+﻿using MassTransit.Definition;
 
 namespace Blocks.Messaging.MassTransit;
 

@@ -15,4 +15,6 @@ public class RefreshToken
     public DateTime ExpiresOn { get; set; }
 
     public DateTime? RevokedOn { get; set; }
+
+    public string? RevokedByIp { get; set; }
 }

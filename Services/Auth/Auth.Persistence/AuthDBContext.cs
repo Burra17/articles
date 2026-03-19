@@ -10,6 +10,7 @@ public class AuthDBContext(DbContextOptions<AuthDBContext> options)
     : IdentityDbContext<User, Role, int>(options)
 {
     public virtual DbSet<Person> Persons { get; set; }
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

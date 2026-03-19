@@ -17,6 +17,7 @@ ARG PROJECT_PATH=Services/Submission/${APP_NAME}
 WORKDIR /src
 COPY ["${PROJECT_PATH}/${APP_NAME}.csproj", "${PROJECT_PATH}/"]
 COPY ["BuildingBlocks/Articles.Abstractions/Articles.Abstractions.csproj", "BuildingBlocks/Articles.Abstractions/"]
+COPY ["BuildingBlocks/Articles.IntegrationEvents.Contracts/Articles.IntegrationEvents.Contracts.csproj", "BuildingBlocks/Articles.IntegrationEvents.Contracts/"]
 COPY ["BuildingBlocks/Articles.Grpc.Contracts/Articles.Grpc.Contracts.csproj", "BuildingBlocks/Articles.Grpc.Contracts/"]
 COPY ["BuildingBlocks/Articles.Security/Articles.Security.csproj", "BuildingBlocks/Articles.Security/"]
 COPY ["BuildingBlocks/Blocks.AspNetCore/Blocks.AspNetCore.csproj", "BuildingBlocks/Blocks.AspNetCore/"]
@@ -44,7 +45,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-ARG APP_NAME
+ARG APP_NAME=Submission.API
 ENV APP_NAME=${APP_NAME}
 
-ENTRYPOINT ["dotnet", "/app/${APP_NAME}.dll"]
+ENTRYPOINT ["/bin/sh", "-c", "exec dotnet /app/${APP_NAME}.dll"]

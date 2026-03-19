@@ -25,6 +25,7 @@ COPY ["BuildingBlocks/Blocks.EntityFramework/Blocks.EntityFrameworkCore.csproj",
 COPY ["BuildingBlocks/Blocks.Exceptions/Blocks.Exceptions.csproj", "BuildingBlocks/Blocks.Exceptions/"]
 COPY ["BuildingBlocks/Blocks.MediatR/Blocks.MediatR.csproj", "BuildingBlocks/Blocks.MediatR/"]
 COPY ["BuildingBlocks/Blocks.Messaging/Blocks.Messaging.csproj", "BuildingBlocks/Blocks.Messaging/"]
+COPY ["BuildingBlocks/Articles.IntegrationEvents.Contracts/Articles.IntegrationEvents.Contracts.csproj", "BuildingBlocks/Articles.IntegrationEvents.Contracts/"]
 COPY ["Services/ArticleHub/ArticleHub.Domain/ArticleHub.Domain.csproj", "Services/ArticleHub/ArticleHub.Domain/"]
 COPY ["Services/ArticleHub/ArticleHub.Persistence/ArticleHub.Persistence.csproj", "Services/ArticleHub/ArticleHub.Persistence/"]
 RUN dotnet restore "./${PROJECT_PATH}/${APP_NAME}.csproj"
@@ -39,7 +40,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-ARG APP_NAME
+ARG APP_NAME=ArticleHub.API
 ENV APP_NAME=${APP_NAME}
 
-ENTRYPOINT ["dotnet", "/app/${APP_NAME}.dll"]
+ENTRYPOINT ["/bin/sh", "-c", "exec dotnet /app/${APP_NAME}.dll"]

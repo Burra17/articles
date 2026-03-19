@@ -41,7 +41,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-ARG APP_NAME
+ARG APP_NAME=Journals.API
 ENV APP_NAME=${APP_NAME}
 
-ENTRYPOINT ["dotnet", "/app/${APP_NAME}.dll"]
+ENTRYPOINT ["/bin/sh", "-c", "exec dotnet /app/${APP_NAME}.dll"]
