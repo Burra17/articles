@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Articles.Security;
 using Blocks.Core;
 using FastEndpoints;
+using FastEndpoints.Swagger;
 using Blocks.Mapster;
 using Blocks.AspNetCore.Grpc;
 using Auth.Grpc;
@@ -32,8 +33,7 @@ public static class DependencyInjection
     {
         services
             .AddFastEndpoints()
-            .AddEndpointsApiExplorer()
-            .AddSwaggerGen()
+            .SwaggerDocument()
             .AddJwtAuthentication(config)
             .AddMapsterConfigsFromCurrentAssembly()
             .AddAuthorization()
