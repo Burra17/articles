@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"admin@articles.test\",\n  \"password\": \"Pass.123!\"\n}",
+							"raw": "{\n  \"email\": \"dotnetlabx@articles.test\",\n  \"password\": \"Pass.123!\"\n}",
 							"options": { "raw": { "language": "json" } }
 						},
 						"url": {
@@ -64,7 +64,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"abbreviation\": \"aisys\",\n  \"name\": \"Artificial Intelligence Systems\",\n  \"description\": \"Focuses on applied AI solutions, intelligent agents, and machine learning models used in real-world systems\",\n  \"issn\": \"9000-0001\",\n  \"chiefEditorId\": 7\n}",
+							"raw": "{\n  \"abbrevation\": \"aisys\",\n  \"name\": \"Artificial Intelligence Systems\",\n  \"description\": \"Focuses on applied AI solutions, intelligent agents, and machine learning models used in real-world systems\",\n  \"issn\": \"9000-0001\",\n  \"chiefEditorId\": 7\n}",
 							"options": { "raw": { "language": "json" } }
 						},
 						"url": {
@@ -91,7 +91,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"journalId\": 1,\n  \"title\": \"Coding with AI: From Hype to Hands-On\",\n  \"type\": \"OriginalResearch\",\n  \"scope\": \"Practical use cases where programmers can integrate AI into applications.\",\n  \"comment\": \"\"\n}",
+							"raw": "{\n  \"journalId\": 1,\n  \"title\": \"Coding with AI: From Hype to Hands-On\",\n  \"articleType\": 1,\n  \"scope\": \"Practical use cases where programmers can integrate AI into applications.\",\n  \"comment\": \"\"\n}",
 							"options": { "raw": { "language": "json" } }
 						},
 						"url": {
@@ -237,11 +237,11 @@
 							"options": { "raw": { "language": "json" } }
 						},
 						"url": {
-							"raw": "https://localhost:4445/api/articles/1/invitations",
+							"raw": "https://localhost:4445/api/articles1/invitations",
 							"protocol": "https",
 							"host": ["localhost"],
 							"port": "4445",
-							"path": ["api", "articles", "1", "invitations"]
+							"path": ["api", "articles1", "invitations"]
 						}
 					},
 					"response": []
