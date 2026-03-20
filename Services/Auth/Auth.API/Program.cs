@@ -3,9 +3,11 @@ using Auth.API.Features.Persons;
 using Auth.Application;
 using Auth.Persistence;
 using Auth.Persistence.Data.Test;
+using Blocks.AspNetCore.Middlewares;
 using Blocks.EntityFrameworkCore;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,10 +35,14 @@ if (app.Environment.IsDevelopment())
 
 #region Use
 app
+    .UseMiddleware<GlobalExceptionMiddleware>()
     .UseRouting()
     .UseAuthentication()
     .UseAuthorization()
-    .UseFastEndpoints()
+    .UseFastEndpoints(c =>
+    {
+        c.Serializer.Options.Converters.Add(new JsonStringEnumConverter());
+    })
     .UseSwaggerGen();
 
 app.MapGrpcService<PersonGrpcService>();

@@ -26,6 +26,7 @@ public class CreateUserEndpoint(PersonRepository _personRepository, AuthDBContex
             person = await CreatePersonAsync(command, ct);
 
         var user = Domain.Users.User.Create(command);
+        user.PersonId = person.Id;
 
         var result = await userManager.CreateAsync(user);
         if (!result.Succeeded)
@@ -34,11 +35,23 @@ public class CreateUserEndpoint(PersonRepository _personRepository, AuthDBContex
             throw new BadRequestException($"Unable to create user: {errorMessages}");
         }
 
+        foreach (var roleDto in command.UserRoles)
+        {
+            var addRoleResult = await userManager.AddToRoleAsync(user, roleDto.Type.ToString());
+            if (!addRoleResult.Succeeded)
+            {
+                var errorMessages = string.Join(" | ", addRoleResult.Errors.Select(e => $"{e.Code}: {e.Description}"));
+                throw new BadRequestException($"Unable to assign role {roleDto.Type}: {errorMessages}");
+            }
+        }
+
         person.AssignUser(user);
 
         var resetPasswordToken = await userManager.GeneratePasswordResetTokenAsync(user);
 
         await _personRepository.SaveChangesAsync(ct);
+
+        await transaction.CommitAsync(ct);
 
         await PublishAsync(new UserCreated(user, resetPasswordToken));
         await Send.OkAsync(new CreateUserResponse(command.Email, user.Id, resetPasswordToken));

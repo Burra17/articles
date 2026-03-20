@@ -15,7 +15,6 @@ public partial class User
             UserName = userInfo.Email,
             Email = userInfo.Email,
             PhoneNumber = userInfo.PhoneNumber,
-            _userRoles = userInfo.UserRoles.Select(r => UserRole.Create(r)).ToList(),
         };
 
         // todo add domain event
